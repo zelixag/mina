@@ -30,7 +30,7 @@ GitFlow 是一个抽象概念，它围绕着软件的发布周期来定义各分
 ### 1. 购买域名 服务器 （阿里云 腾讯云）
 ### 2. 搭建服务器 域名绑定服务器
 ### 3. 部署持续集成环境
-  ### - linux shell   命令
+### - linux shell   命令
     ssh -p 28450 root@144.34.151.57
     yum update
     wget tomcatUrl
@@ -162,7 +162,7 @@ server {
 如果需要访问跟目录 root目录的静态资源 一定要给nginx权限 ** user toot ** 配置到nginx.conf最顶端
 这样就可以简单配置一个web服务器  绑定服务器端口 绑定域名 绑定服务器静态资源
 
-** 弄一个 一个nginx服务器绑定多个域名 访问多个资源 **
+**弄一个 一个nginx服务器绑定多个域名 访问多个资源**
 ```nginx
   upstream mysvr {
     server 127.0.0.1:3009; 
