@@ -252,3 +252,4 @@ server {
    ![](https://static-s.styd.cn/201903211041/gilabconfigjenkin.png)
    
   然后提交代码 项目就可以通过你的配置自动构建了
+  以上是jenkins比较复杂的配置 也可以使用yum安装 安装的java环境不需要配置 但是要找到JAVA_HOME 装好java 直接yum安装jenkins
