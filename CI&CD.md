@@ -38,22 +38,24 @@ GitFlow 是一个抽象概念，它围绕着软件的发布周期来定义各分
     source /etc/profile
     下面还有一些简单命令
 ### 安装java环境
-  1. 查看是否有java环境
-            ``` 
-            java -version
-            ```
-  output 输出
+1. 查看是否有java环境
+ ``` 
+java -version
+```
+output 输出
 ```shell
   java version "1.7.0_25"
 
   Open JDK Runtime Environment (rhel-2.3.10.4.el6_4-x86_64)
 
   Open JDK 64-Bit Server VM (build 23.7-b01, mixed mode)
-```         
-  则java环境没问题
-  ### 1. 配置java环境
-      1. 安装JDK 使用解压安装，不然找不到JAVA_HOME地址
-      - 卸载之前JDK
+```        
+
+则java环境没问题
+
+### 1. 配置java环境
+1. 安装JDK 使用解压安装，不然找不到JAVA_HOME地址
+- 卸载之前JDK
 ```shell
   # 查看是否安装Java
   java -version
@@ -62,9 +64,8 @@ GitFlow 是一个抽象概念，它围绕着软件的发布周期来定义各分
   # 卸载原装Java,<java_package>为查找到的安装包信息
   rpm -e --nodeps <java_package>
 ```                          
-  - 使用wget url命令下载自己想要的JDK 解压 安装
+- 使用wget url命令下载自己想要的JDK 解压 安装
 ```shell
-        asedfjkgasjkghfcdsau
 # 创建安装目录
 mkdir -p /usr/local/java
 # 下载
