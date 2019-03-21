@@ -100,7 +100,7 @@ export CATALINA_HOME=/usr/local/java/apache-tomcat-8.5.23
 ```
 - 配置开机启动
 配置服务
-- 将上述tomcat中的catalina.sh复制到 / etc / init.d / 并命名为tomcat
+将上述tomcat中的catalina.sh复制到 / etc / init.d / 并命名为tomcat
 ```shell
 cp /usr/lib/tomcat/apache-tomcat-9.0.16/bin/catalina.sh /etc/init.d/tomcat9
 chmod 755 /etc/init.d/tomcat7
@@ -121,7 +121,6 @@ chkconfig --add tomcat7
 chkconfig tomcat7 on
 ```
 配置防火墙打开80端口
-
 ```js
 /sbin/iptables -I INPUT -p tcp --dport 80 -j ACCEPT 
 /sbin/iptables -I INPUT -p tcp --dport 8080 -j ACCEPT 
