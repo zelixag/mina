@@ -6,9 +6,15 @@
   - 购买域名 服务器
   - 搭建服务器 linux系统命令行操作 
   - 部署持续集成环境 
+> 涉及相关知识： 
+> linux shell命令 
+> nginx配置 
+> tomcat环境配置 
+> java环境配置
+> 服务器绑定域名
 ## 基本概念
 ### 1.GitFlow
-GitFlow 是一个抽象概念，它围绕着软件的发布周期来定义各分支的协作、合并、组织等管理策略。
+GitFlow 是一个抽象概念，它围绕着软件的发布周期来定义各分支的协作、合并、组织等管理策略。[我们GitFlow](https://www.tapd.cn/33239975/markdown_wikis/#1133239975001000145)
 ### 2. 持续集成CI（Continuous Integration，缩写 CI）
 **持续集成**是一种软件开发实践，即团队开发成员经常**集成**他们的工作，通常每个成员每天至少集成一次，也就意味着每天可能会发生多次集成。 每次集成都通过**自动化的构建**（包括编译，发布，自动化测试）来验证，从而尽早地发现集成错误。
 
@@ -30,25 +36,25 @@ GitFlow 是一个抽象概念，它围绕着软件的发布周期来定义各分
 ### 1. 购买域名 服务器 （阿里云 腾讯云）
 ### 2. 搭建服务器 域名绑定服务器
 ### 3. 部署持续集成环境
-### - linux shell   命令
-```shell
-ssh -p 28450 root@144.34.151.57
-yum update
-wget tomcatUrl
-tar -xzvf apache-tomcat-8.5.23.tar.gz -C /usr/local/
-source /etc/profile
-```
-下面还有一些简单命令
+  ### - linux shell   命令
+    ssh -p 28450 root@144.34.151.57
+    yum update
+    wget tomcatUrl
+    tar -xzvf apache-tomcat-8.5.23.tar.gz -C /usr/local/
+    source /etc/profile
+    下面还有一些简单命令
 ### 安装java环境
-1. 查看是否有java环境
-``` 
-java -version
-```
-output 输出
+  1. 查看是否有java环境
+            ``` 
+            java -version
+            ```
+  output 输出
 ```shell
-java version "1.7.0_25"
-Open JDK Runtime Environment (rhel-2.3.10.4.el6_4-x86_64)
-Open JDK 64-Bit Server VM (build 23.7-b01, mixed mode)
+  java version "1.7.0_25"
+
+  Open JDK Runtime Environment (rhel-2.3.10.4.el6_4-x86_64)
+
+  Open JDK 64-Bit Server VM (build 23.7-b01, mixed mode)
 ```        
 
 则java环境没问题
@@ -57,12 +63,12 @@ Open JDK 64-Bit Server VM (build 23.7-b01, mixed mode)
 1. 安装JDK 使用解压安装，不然找不到JAVA_HOME地址
 - 卸载之前JDK
 ```shell
-# 查看是否安装Java
-java -version
-# 查看Java的安装包信息
-rpm -qa | grep java
-# 卸载原装Java,<java_package>为查找到的安装包信息
-rpm -e --nodeps <java_package>
+  # 查看是否安装Java
+  java -version
+  # 查看Java的安装包信息
+  rpm -qa | grep java
+  # 卸载原装Java,<java_package>为查找到的安装包信息
+  rpm -e --nodeps <java_package>
 ```                          
 - 使用wget url命令下载自己想要的JDK 解压 安装
 ```shell
@@ -78,39 +84,39 @@ wget **--no-check-certificate --no-cookies --header "Cookie: oraclelicense=accep
 ![JDK](https://static-s.styd.cn/201903141352/jDK.png)
  - 配置环境变量
 ```shell 
-vi /etc/profile
+  vi /etc/profile
 ```
 ```text
-export JAVA_HOME=/usr/local/java/jdk1.8.0_151 # 自己安装JDK的版本号
-export CLASSPATH=.:$JAVA_HOME/lib/tool.jar:$JAVA_HOME/lib/dt.jar
-export PATH=$PATH:$JAVA_HOME/bin
+  export JAVA_HOME=/usr/local/java/jdk1.8.0_151 # 自己安装JDK的版本号
+  export CLASSPATH=.:$JAVA_HOME/lib/tool.jar:$JAVA_HOME/lib/dt.jar
+  export PATH=$PATH:$JAVA_HOME/bin
 ```  
 ### 3. 下载tomcat 配置tomcat环境 开机启动
 - tomcat安装
 - 安装
 ```shell
-wget tomcatUrl
-tar -xzvf apache-tomcat-8.5.23.tar.gz -C /usr/local/java
+  wget tomcatUrl
+  tar -xzvf apache-tomcat-8.5.23.tar.gz -C /usr/local/java
 ```
 - 配置Tomcat的环境变量
 在 / etc / profile文件后再追加一条TOMCAT的环境变量
 ```text
-# 在/etc/profile文件末尾追加TOMCAT的环境变量
-export CATALINA_HOME=/usr/local/java/apache-tomcat-8.5.23
+  # 在/etc/profile文件末尾追加TOMCAT的环境变量
+  export CATALINA_HOME=/usr/local/java/apache-tomcat-8.5.23
 ```
 - 配置开机启动
 配置服务
-将上述tomcat中的catalina.sh复制到 / etc / init.d / 并命名为tomcat
+- 将上述tomcat中的catalina.sh复制到 / etc / init.d / 并命名为tomcat
 ```shell
-cp /usr/lib/tomcat/apache-tomcat-9.0.16/bin/catalina.sh /etc/init.d/tomcat9
-chmod 755 /etc/init.d/tomcat7
+  cp /usr/lib/tomcat/apache-tomcat-9.0.16/bin/catalina.sh /etc/init.d/tomcat9
+  chmod 755 /etc/init.d/tomcat7
 ```
 接着对拷贝的脚本进行修改, 添加chkconfig和description两行注释, 同时加上JAVA_HOME和CATALINA_HOME声明
 ```text
-#chkconfig: 2345 10 90
-#description: tomcat8 service
-export JAVA_HOME=/software/jdk1.7.0_51
-export CATALINA_HOME=/software/apache-tomcat-7.0.55
+  #chkconfig: 2345 10 90
+  #description: tomcat8 service
+  export JAVA_HOME=/software/jdk1.7.0_51
+  export CATALINA_HOME=/software/apache-tomcat-7.0.55
 ```
 使用chkconfig - add tomcat7 将其添加为服务
 ```shell
@@ -121,12 +127,13 @@ chkconfig --add tomcat7
 chkconfig tomcat7 on
 ```
 配置防火墙打开80端口
-```js
-/sbin/iptables -I INPUT -p tcp --dport 80 -j ACCEPT 
-/sbin/iptables -I INPUT -p tcp --dport 8080 -j ACCEPT 
-/etc/init.d/iptables save
-service iptables restart
-```
+
+  ```js
+  /sbin/iptables -I INPUT -p tcp --dport 80 -j ACCEPT 
+  /sbin/iptables -I INPUT -p tcp --dport 8080 -j ACCEPT 
+  /etc/init.d/iptables save
+  service iptables restart
+  ```
 ### 一些细节问题
 1.JAVA_HOME， JRE_HOME，CLASS_PATH，PATH四个环境变量一定要确认无误（我就是在这翻车了）。
 2.RH - Firewall - 1 - INPUT 表示进出规则在一个链上。（我参照22端口的设置做，第二次翻车）
@@ -161,7 +168,7 @@ server {
 如果需要访问跟目录 root目录的静态资源 一定要给nginx权限 ** user toot ** 配置到nginx.conf最顶端
 这样就可以简单配置一个web服务器  绑定服务器端口 绑定域名 绑定服务器静态资源
 
-**弄一个 一个nginx服务器绑定多个域名 访问多个资源**
+** 弄一个 一个nginx服务器绑定多个域名 访问多个资源 **
 ```nginx
   upstream mysvr {
     server 127.0.0.1:3009; 
