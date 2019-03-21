@@ -250,11 +250,10 @@ server {
    ![](https://static-s.styd.cn/201903211023/shengchpostlianjiehetooken.png)
    - gitlab关联jenkinspost请求
    ![](https://static-s.styd.cn/201903211041/gilabconfigjenkin.png)
-   
   然后提交代码 项目就可以通过你的配置自动构建了
   以上是jenkins比较复杂的配置 也可以使用yum安装 安装的java环境不需要配置 但是要找到JAVA_HOME 装好java 直接yum安装jenkins
   
   这都简单普及的jenkins持续集成方案 还有很多其他方案 gitCI 也可以 原理都一样
 
-   ![](https://static-s.styd.cn/201903211025/guanliangitxiangmu.png)都一样
-   ![](https://static-s.styd.cn/201903211025/guanliangitxiangmu.png)
+
+  
